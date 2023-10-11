@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: a1
+  namespace: jenkins
+spec:
+  containers:
+    - name: a1
+      image: localhost/alp.httpd:latest
+      imagePullPolicy: Never

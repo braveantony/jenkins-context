@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "backstage-sample-service8"
+  annotations:
+    # instanceName and github-organization-project-name are optional. The value is a string and should >
+    jenkins.io/job-full-name: default:sample/backstage-sample-service8
+spec:
+  type: service
+  owner: user:bobo
+  lifecycle: lab

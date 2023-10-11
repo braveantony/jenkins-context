@@ -1,0 +1,12 @@
+#!/bin/bash
+tarName="${1}"
+jsonpath="{.items[*].status.addresses[?(@.type==\"InternalIP\")].address}"
+K8S_IPs="$(kubectl get node -o jsonpath=${jsonpath})"
+for IP in ${K8S_IPs}; do
+    sshpass -p "bigred" scp -o StrictHostKeyChecking=no "${tarName}" bigred@"${IP}":/home/bigred/
+    echo -n "${IP}: "
+    sshpass -p "bigred" ssh -o StrictHostKeyChecking=no bigred@"${IP}" "\
+        sudo podman rmi --force ${tarName%.tar} &>/dev/null && \
+        sudo podman load --quiet --input ${tarName} && \
+        rm -r ${tarName}"
+done
