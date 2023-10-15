@@ -4,7 +4,7 @@ metadata:
   name: ${{ values.name | dump }}
   annotations:
     # instanceName and github-organization-project-name are optional. The value is a string and should >
-    jenkins.io/job-full-name: default:sample/backstage-sample-service8
+    jenkins.io/job-full-name: default:sample/backstage-sample-service9
 spec:
   type: service
   owner: user:bobo
